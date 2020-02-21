@@ -3,7 +3,7 @@
 <h1 v-on:click="goHome"> Kanto Pokedex </h1>
 <pokemon-list :allPokemon="pokemonData" />
 <pokemon-search :allPokemon="pokemonData" />
-<button name="Random Pokemon" type="button" v-on:click="randomPokemon">Generate a Random Pokemon!</button>
+<button name="Random Pokemon" type="button" v-on:click="randomPokemon">Click for a Random Pokemon!</button>
 <pokemon-detail :pokemon="selectedPokemon" v-if="selectedPokemon"/>
 </div>
 </template>
