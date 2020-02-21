@@ -6,6 +6,7 @@
 <div v-if="selectedPokemon != null">
 <pokemon-detail v-for="(pokemon, index) in filteredPokemon" :key="index" :pokemon="pokemon" />
 </div> -->
+
 <select v-on:change="handleChange" v-model="selectedPokemon">
   <option value="" disabled selected>Choose a Pokemon:</option>
   <option v-for="(pokemon, index) in allPokemon" :key="index" :value="pokemon"> {{pokemon.name}} </option>

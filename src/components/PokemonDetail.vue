@@ -68,7 +68,6 @@ img {
 
 h2 {
   text-align: center;
-  /* color: white; */
 }
 
 .type {
