@@ -3,6 +3,7 @@
 <h1> Kanto Pokedex </h1>
 <pokemon-list :allPokemon="pokemonData" />
 <pokemon-search :allPokemon="pokemonData" />
+<button name="Random Pokemon" type="button" v-on:click="randomPokemon">Generate a Random Pokemon!</button>
 <pokemon-detail :pokemon="selectedPokemon" v-if="selectedPokemon"/>
 </div>
 </template>
@@ -44,6 +45,14 @@ methods: {
       .then(res => res.json())
       .then(data => this.pokemonData.push(data))
     }
+  },
+  randomPokemon: function() {
+    let pokemonIndex = Math.floor(Math.random() * (151 - 1)) + 1;
+    for (const pokemon of this.pokemonData) {
+      if (pokemon['id'] == pokemonIndex) {
+        this.selectedPokemon = pokemon;
+      }
+    }
   }
 },
 components: {
@@ -58,5 +67,12 @@ components: {
 h1 {
   display: flex;
   justify-content: center;
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }
 </style>
