@@ -45,4 +45,9 @@ components: {
 </script>
 
 <style lang="css" scoped>
+select {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

@@ -55,4 +55,8 @@ components: {
 </script>
 
 <style lang="css" scoped>
+h1 {
+  display: flex;
+  justify-content: center;
+}
 </style>

@@ -5,14 +5,18 @@
   <div class='picture'>
   <img :src="pokemon.sprites.front_default" />
  </div>
+ <div class="list">
   <p>Type</p>
   <ul>
     <li v-for="(type, index) in pokemon.types" :key="index" class='name'> {{type.type.name}} </li>
   </ul>
+</div>
+<div class="list">
   <p>Moves</p>
   <ul>
     <li v-for="(ability, index) in pokemon.abilities" :key="index" class='name'> {{ability.ability.name}} </li>
   </ul>
+</div>
 </div>
 
 </template>
@@ -28,12 +32,15 @@ export default {
 .card {
   height: 430px;
   max-width: 300px;
+  border-radius: 14.9784px;
   background: #39394a;
-  border-radius: 6px;
   padding: 20px;
   border: 5px solid #9494a4;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-top: 10px;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .name {
@@ -56,5 +63,6 @@ ul {
 img {
  padding-left: 100px;
 }
+
 
 </style>
