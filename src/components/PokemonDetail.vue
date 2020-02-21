@@ -77,6 +77,7 @@ h2 {
 
 .moves {
   margin-left: 200px;
+  margin-bottom: -50px;
 }
 
 .underline {

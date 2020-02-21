@@ -1,6 +1,6 @@
 <template lang="html">
 <div>
-<h1> Kanto Pokedex </h1>
+<h1 v-on:click="goHome"> Kanto Pokedex </h1>
 <pokemon-list :allPokemon="pokemonData" />
 <pokemon-search :allPokemon="pokemonData" />
 <button name="Random Pokemon" type="button" v-on:click="randomPokemon">Generate a Random Pokemon!</button>
@@ -53,6 +53,9 @@ methods: {
         this.selectedPokemon = pokemon;
       }
     }
+  },
+  goHome: function() {
+    this.selectedPokemon = null;
   }
 },
 components: {
@@ -67,6 +70,7 @@ components: {
 h1 {
   display: flex;
   justify-content: center;
+  color: white;
 }
 
 button {
