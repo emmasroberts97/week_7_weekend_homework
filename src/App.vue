@@ -1,28 +1,58 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang="html">
+<div>
+<h1> Kanto Pokedex </h1>
+<pokemon-list :allPokemon="pokemonData" />
+<pokemon-search :allPokemon="pokemonData" />
+<pokemon-detail :pokemon="selectedPokemon" v-if="selectedPokemon"/>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PokemonList from './components/PokemonList.vue';
+import PokemonSearch from './components/PokemonSearch.vue';
+import PokemonDetail from './components/PokemonDetail.vue'
+import {eventBus} from './main.js';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: 'app',
+  data() {
+    return {
+    allPokemon: [],
+    pokemonData: [],
+    selectedPokemon: null
   }
+},
+mounted() {
+  fetch('https://pokeapi.co/api/v2/pokemon/?limit=151')
+  .then(res => res.json())
+  .then(data => {
+    this.allPokemon = data.results;
+    this.getPokemonData();
+  })
+
+  eventBus.$on('pokemon-selected', (pokemon) => {
+    this.selectedPokemon = pokemon;
+  })
+},
+
+methods: {
+  getPokemonData: function() {
+    for (const pokemon of this.allPokemon) {
+      let url = pokemon.url;
+
+      fetch(url)
+      .then(res => res.json())
+      .then(data => this.pokemonData.push(data))
+    }
+  }
+},
+components: {
+  'pokemon-list': PokemonList,
+  'pokemon-search': PokemonSearch,
+  'pokemon-detail': PokemonDetail
+}
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css" scoped>
 </style>
