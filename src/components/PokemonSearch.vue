@@ -1,6 +1,6 @@
 <template lang="html">
-<div>
-  <!-- <label for="pokemon-search">Search for Pokemon:</label>
+<!-- <div>
+  <label for="pokemon-search">Search for Pokemon:</label>
   <input id="pokemon-search" name="pokemon-search" type="search" v-model="selectedPokemon"></input>
 
 <div v-if="selectedPokemon != null">

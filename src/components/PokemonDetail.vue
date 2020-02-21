@@ -1,19 +1,19 @@
 <template lang="html">
 <div class="card">
-  <p class="name">{{pokemon.name}}</p>
-  <p> Base Experience: {{pokemon.base_experience}} </p>
-  <div class='picture'>
-  <img :src="pokemon.sprites.front_default" />
+  <h2 class="name">{{pokemon.name}}</h2>
+  <p> HP: {{getHP}}</p>
+  <div class="picture">
+  <img :src="pokemon.sprites.front_default" height="200" width="200" />
  </div>
- <div class="list">
-  <p>Type</p>
-  <ul>
+ <div>
+  <p class="underline" id="type">Type</p>
+  <ul class="type">
     <li v-for="(type, index) in pokemon.types" :key="index" class='name'> {{type.type.name}} </li>
   </ul>
 </div>
-<div class="list">
-  <p>Moves</p>
-  <ul>
+<div >
+  <p class="underline" id="moves">Moves</p>
+  <ul class="moves">
     <li v-for="(ability, index) in pokemon.abilities" :key="index" class='name'> {{ability.ability.name}} </li>
   </ul>
 </div>
@@ -24,18 +24,25 @@
 <script>
 export default {
   name: 'pokemon-detail',
-  props: ['pokemon']
+  props: ['pokemon'],
+  computed: {
+    getHP() {
+    for (const stat of this.pokemon.stats) {
+      if (stat.stat.name == "hp") {
+        return stat.base_stat;
+      }
+    }
+   }
+  }
 }
 </script>
 
 <style lang="css" scoped>
 .card {
-  height: 430px;
-  max-width: 300px;
-  border-radius: 14.9784px;
-  background: #39394a;
+  height: 480px;
+  max-width: 330px;
+  background-image: url('../../public/poke_card.png');
   padding: 20px;
-  border: 5px solid #9494a4;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-top: 20px;
   display: block;
@@ -45,10 +52,7 @@ export default {
 
 .name {
   text-transform: capitalize;
-}
-
-.picture {
-  background: white;
+  margin-top: -3px;
 }
 
 p {
@@ -56,12 +60,37 @@ p {
   font-weight: bold;
 }
 
-ul {
-  padding-left: 125px;
-}
 
 img {
- padding-left: 100px;
+ margin-top: -25px;
+ padding-left: 70px;
+}
+
+h2 {
+  text-align: center;
+  /* color: white; */
+}
+
+.type {
+  margin-bottom: -50px;
+}
+
+.moves {
+  margin-left: 200px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+#type {
+  margin-left: -200px;
+}
+
+#moves {
+  margin-top: -30px;
+  margin-left: 225px;
+  position: fixed;
 }
 
 
