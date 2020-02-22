@@ -3,7 +3,7 @@
   <h2 class="name">{{pokemon.name}}</h2>
   <p> HP: {{getHP}}</p>
   <div class="picture">
-  <img :src="pokemon.sprites.front_default" height="200" width="200" />
+  <img :src="getImage" height="200" width="200" />
  </div>
  <div>
   <p class="underline" id="type">Type</p>
@@ -32,7 +32,15 @@ export default {
         return stat.base_stat;
       }
     }
-   }
+  },
+  getImage() {
+    let probability = Math.random()
+    if (probability < 0.8) {
+      return this.pokemon.sprites.front_default;
+    } else {
+      return this.pokemon.sprites.front_shiny;
+    }
+  }
  }
 }
 </script>
