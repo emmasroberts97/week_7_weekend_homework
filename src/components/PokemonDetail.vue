@@ -24,7 +24,7 @@
 <script>
 export default {
   name: 'pokemon-detail',
-  props: ['pokemon'],
+  props: ['pokemon', 'allPokemon'],
   computed: {
     getHP() {
     for (const stat of this.pokemon.stats) {
@@ -33,7 +33,7 @@ export default {
       }
     }
    }
-  }
+ }
 }
 </script>
 
@@ -90,7 +90,6 @@ h2 {
 #moves {
   margin-top: -30px;
   margin-left: 225px;
-  position: fixed;
 }
 
 

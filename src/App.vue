@@ -3,8 +3,10 @@
 <h1 v-on:click="goHome"> Kanto Pokedex </h1>
 <pokemon-list :allPokemon="pokemonData" />
 <pokemon-search :allPokemon="pokemonData" />
-<button name="Random Pokemon" type="button" v-on:click="randomPokemon">Click for a Random Pokemon!</button>
-<pokemon-detail :pokemon="selectedPokemon" v-if="selectedPokemon"/>
+<button name="Random Pokemon" class="random" type="button" v-on:click="randomPokemon">Click for a Random Pokemon!</button>
+<button name="Previous Pokemon" type="button" class="previous" v-on:click="viewPrevious" v-if="selectedPokemon">Previous Pokemon</button>
+<button name="Next Pokemon" type="button" class="next" v-on:click="viewNext" v-if="selectedPokemon">Next Pokemon</button>
+<pokemon-detail :pokemon="selectedPokemon" :allPokemon="pokemonData" v-if="selectedPokemon"/>
 </div>
 </template>
 
@@ -56,6 +58,16 @@ methods: {
   },
   goHome: function() {
     this.selectedPokemon = null;
+  },
+  viewPrevious: function() {
+    let newPokemon = this.pokemonData.find((pokemon) => pokemon.id === (this.selectedPokemon.id - 1))
+
+    this.selectedPokemon = newPokemon;
+  },
+  viewNext: function(){
+  let newPokemon = this.pokemonData.find((pokemon) => pokemon.id === (this.selectedPokemon.id + 1))
+
+  this.selectedPokemon = newPokemon;
   }
 },
 components: {
@@ -73,10 +85,20 @@ h1 {
   color: white;
 }
 
-button {
+button.random {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
 }
+
+button.next {
+  margin-left: 650px;
+}
+
+button.previous {
+margin-left: 200px;
+}
+
+
 </style>
