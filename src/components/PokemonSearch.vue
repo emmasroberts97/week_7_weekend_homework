@@ -9,7 +9,7 @@
 </div> -->
 
 <select v-on:change="handleChange" v-model="selectedPokemon" id="dropdown">
-  <option value="0" disabled selected>Choose a Pokemon:</option>
+  <option value="0" disabled selected>Choose a Pokémon:</option>
   <option v-for="(pokemon, index) in allPokemon" :key="index" :value="pokemon"> {{pokemon.name}} </option>
 </select>
 </div>

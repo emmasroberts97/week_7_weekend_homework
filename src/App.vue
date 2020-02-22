@@ -3,12 +3,12 @@
 <div>
   <img src="../public/pokeball.png" height="40" width="40" class="bounce"/>
 </div>
-<h1 v-on:click="goHome"> Kanto Pokedex </h1>
+<h1 v-on:click="goHome"> Kanto Pokédex </h1>
 <pokemon-list :allPokemon="pokemonData" />
 <pokemon-search :allPokemon="pokemonData" />
-<button name="Random Pokemon" class="random" type="button" v-on:click="randomPokemon">Click for a Random Pokemon!</button>
-<button name="Previous Pokemon" type="button" class="previous" v-on:click="viewPrevious" v-if="selectedPokemon">Previous Pokemon</button>
-<button name="Next Pokemon" type="button" class="next" v-on:click="viewNext" v-if="selectedPokemon">Next Pokemon</button>
+<button name="Random Pokemon" class="random" type="button" v-on:click="randomPokemon">Click for a Random Pokémon!</button>
+<button name="Previous Pokemon" type="button" class="previous" v-on:click="viewPrevious" v-if="selectedPokemon">Previous Pokémon</button>
+<button name="Next Pokemon" type="button" class="next" v-on:click="viewNext" v-if="selectedPokemon">Next Pokémon</button>
 <pokemon-detail :pokemon="selectedPokemon" :allPokemon="pokemonData" v-if="selectedPokemon"/>
 </div>
 </template>
