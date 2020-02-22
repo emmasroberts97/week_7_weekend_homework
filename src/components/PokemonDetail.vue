@@ -96,7 +96,7 @@ h2 {
 }
 
 #moves {
-  margin-top: -30px;
+  margin-top: -70px;
   margin-left: 225px;
 }
 

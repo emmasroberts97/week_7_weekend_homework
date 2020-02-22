@@ -1,5 +1,8 @@
 <template lang="html">
 <div>
+<div>
+  <img src="../public/pokeball.png" height="40" width="40" class="bounce"/>
+</div>
 <h1 v-on:click="goHome"> Kanto Pokedex </h1>
 <pokemon-list :allPokemon="pokemonData" />
 <pokemon-search :allPokemon="pokemonData" />
@@ -92,6 +95,8 @@ h1 {
   display: flex;
   justify-content: center;
   color: white;
+  font-family: 'Acme';
+  margin-top: -20px;
 }
 
 button.random {
@@ -107,6 +112,39 @@ button.next {
 
 button.previous {
 margin-left: 200px;
+}
+
+@keyframes bounce {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -20px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+.bounce {
+  animation-name: bounce;
+  animation-duration: 4s;
+  transform-origin: center bottom;
+  animation-iteration-count: infinite;
 }
 
 
