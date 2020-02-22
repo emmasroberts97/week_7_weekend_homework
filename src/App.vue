@@ -55,19 +55,28 @@ methods: {
         this.selectedPokemon = pokemon;
       }
     }
+    this.reset();
   },
   goHome: function() {
     this.selectedPokemon = null;
+    let dropDown = document.getElementById("dropdown");
+    this.reset();
   },
   viewPrevious: function() {
     let newPokemon = this.pokemonData.find((pokemon) => pokemon.id === (this.selectedPokemon.id - 1))
 
     this.selectedPokemon = newPokemon;
+    this.reset();
   },
   viewNext: function(){
   let newPokemon = this.pokemonData.find((pokemon) => pokemon.id === (this.selectedPokemon.id + 1))
 
   this.selectedPokemon = newPokemon;
+  this.reset();
+},
+  reset: function() {
+   let dropDown = document.getElementById("dropdown");
+    dropDown.selectedIndex = 0;
   }
 },
 components: {

@@ -1,5 +1,5 @@
 <template lang="html">
-  
+
 <!-- <div>
   <label for="pokemon-search">Search for Pokemon:</label>
   <input id="pokemon-search" name="pokemon-search" type="search" v-model="selectedPokemon"></input>
@@ -8,8 +8,8 @@
 <pokemon-detail v-for="(pokemon, index) in filteredPokemon" :key="index" :pokemon="pokemon" />
 </div> -->
 
-<select v-on:change="handleChange" v-model="selectedPokemon">
-  <option value="" disabled selected>Choose a Pokemon:</option>
+<select v-on:change="handleChange" v-model="selectedPokemon" id="dropdown">
+  <option value="0" disabled selected>Choose a Pokemon:</option>
   <option v-for="(pokemon, index) in allPokemon" :key="index" :value="pokemon"> {{pokemon.name}} </option>
 </select>
 </div>
